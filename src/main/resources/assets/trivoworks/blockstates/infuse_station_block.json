@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "trivoworks:block/infuse_station_lower"
+    },
+    "half=upper": {
+      "model": "trivoworks:block/infuse_station_upper"
+    }
+  }
+}

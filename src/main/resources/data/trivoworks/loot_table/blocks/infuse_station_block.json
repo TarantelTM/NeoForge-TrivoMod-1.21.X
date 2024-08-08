@@ -1,0 +1,30 @@
+{
+  "type": "block",
+  "neoforge:conditions": [
+  ],
+  "functions": [
+  ],
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "name": "trivoworks:infuse_station_block",
+      "conditions": [
+      ],
+      "functions": [
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "trivoworks:infuse_station_block",
+          "weight": 3,
+          "quality": 1,
+          "conditions": [
+          ],
+          "functions": [
+          ]
+        }
+      ]
+    }
+  ]
+}

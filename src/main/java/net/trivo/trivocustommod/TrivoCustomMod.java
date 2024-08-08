@@ -1,5 +1,8 @@
 package net.trivo.trivocustommod;
 
+import net.trivo.trivocustommod.block.ModBlocks;
+import net.trivo.trivocustommod.item.ModCreativeModeTabs;
+import net.trivo.trivocustommod.item.ModItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -39,7 +42,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class TrivoCustomMod  {
 
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "trivocustommod";
+    public static final String MODID = "trivoworks";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -53,6 +56,11 @@ public class TrivoCustomMod  {
         modEventBus.addListener(this::addCreative);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        ModBlocks.register(modEventBus);
+        ModItems.register(modEventBus);
+
+        ModCreativeModeTabs.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -63,7 +71,9 @@ public class TrivoCustomMod  {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.INFUSE_STATION_BLOCK.get());
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
