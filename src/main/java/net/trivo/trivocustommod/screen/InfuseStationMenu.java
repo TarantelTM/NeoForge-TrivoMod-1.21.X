@@ -7,11 +7,9 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.neoforge.capabilities.ItemCapability;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import net.trivo.trivocustommod.block.ModBlocks;
 import net.trivo.trivocustommod.block.entity.InfuseStationBlockEntity;
-import org.jetbrains.annotations.Nullable;
 
 public class InfuseStationMenu extends AbstractContainerMenu {
     public final InfuseStationBlockEntity blockEntity;
@@ -19,14 +17,13 @@ public class InfuseStationMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public InfuseStationMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()),
-                new SimpleContainerData(2));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
     public InfuseStationMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.INFUSE_STATION_MENU.get(), pContainerId);
         checkContainerSize(inv, 1);
-        blockEntity = ((InfuseStationBlockEntity) entity);
+        blockEntity = (InfuseStationBlockEntity) entity;
         this.level = inv.player.level();
         this.data = data;
 
@@ -51,7 +48,6 @@ public class InfuseStationMenu extends AbstractContainerMenu {
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
-
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
@@ -122,9 +118,5 @@ public class InfuseStationMenu extends AbstractContainerMenu {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
-    }
-
-    public BlockEntity getBlockEntity() {
-        return blockEntity;
     }
 }
