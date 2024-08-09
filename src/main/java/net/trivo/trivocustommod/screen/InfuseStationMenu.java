@@ -17,7 +17,7 @@ public class InfuseStationMenu extends AbstractContainerMenu {
     public final InfuseStationBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
-
+///TEST
     public InfuseStationMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()),
                 new SimpleContainerData(2));
