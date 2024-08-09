@@ -3,6 +3,8 @@ package net.trivo.trivocustommod.block.entity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -22,5 +24,12 @@ public class ModBlockEntities {
 
     public static void register(IEventBus eventBus) {
         REGISTER.register(eventBus);
+    }
+
+    public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
+                INFUSE_STATION_BE.get(), InfuseStationBlockEntity::getItemHandlerCapability);
+
     }
 }
