@@ -14,6 +14,13 @@ public class InfuseStationScreen extends AbstractContainerScreen<InfuseStationMe
 
     public InfuseStationScreen(InfuseStationMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
+        this.imageWidth = 176;
+        this.imageHeight = 166;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
     }
 
     @Override
