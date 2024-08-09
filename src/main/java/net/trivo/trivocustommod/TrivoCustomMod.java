@@ -1,6 +1,7 @@
 package net.trivo.trivocustommod;
 
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.trivo.trivocustommod.block.ModBlocks;
 import net.trivo.trivocustommod.block.entity.ModBlockEntities;
@@ -44,6 +45,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.io.FileNotFoundException;
+
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(TrivoCustomMod.MODID)
 public class TrivoCustomMod  {
@@ -52,10 +55,9 @@ public class TrivoCustomMod  {
     public static final String MODID = "trivoworks";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
+    private static final String PROTOCOL_VERSION = "1";
 
-
-    public TrivoCustomMod(IEventBus modEventBus, ModContainer modContainer)
-    {
+    public TrivoCustomMod(IEventBus modEventBus, ModContainer modContainer) throws FileNotFoundException {
         modEventBus.addListener(this::commonSetup);
 
         NeoForge.EVENT_BUS.register(this);
@@ -68,12 +70,14 @@ public class TrivoCustomMod  {
         ModItems.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
-
+        modEventBus.addListener(this::registerCapabilities);
         ModCreativeModeTabs.register(modEventBus);
 
 
     }
-
+    public void registerCapabilities(RegisterCapabilitiesEvent event) {
+        ModBlockEntities.registerCapabilities(event);
+    }
     private void commonSetup(final FMLCommonSetupEvent event)
     {
 
