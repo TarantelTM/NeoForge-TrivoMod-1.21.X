@@ -142,6 +142,17 @@ public class InfuseStationBlock extends BaseEntityBlock {
             ServerPlayer theplayer = (ServerPlayer) player;
             if(entity instanceof InfuseStationBlockEntity) {
                 theplayer.openMenu((InfuseStationBlockEntity)entity, pos);
+
+                double centerX = pos.getX() + 0.5;
+                double centerY = pos.getY() + 0.5;
+                double centerZ = pos.getZ() + 0.5;
+
+                player.teleportTo(centerX, centerY, centerZ);
+
+                Direction facing = state.getValue(FACING);
+                float yaw = facing.toYRot();
+                player.setYRot(yaw);
+                player.setXRot(0);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
@@ -156,6 +167,17 @@ public class InfuseStationBlock extends BaseEntityBlock {
             ServerPlayer theplayer = (ServerPlayer) player;
             if(entity instanceof InfuseStationBlockEntity) {
                 theplayer.openMenu((InfuseStationBlockEntity)entity, pos);
+
+                double centerX = pos.getX() + 0.5;
+                double centerY = pos.getY() + 0.5;
+                double centerZ = pos.getZ() + 0.5;
+
+                player.teleportTo(centerX, centerY, centerZ);
+
+                Direction facing = state.getValue(FACING);
+                float yaw = facing.toYRot();
+                player.setYRot(yaw);
+                player.setXRot(0);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
