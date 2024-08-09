@@ -1,8 +1,15 @@
 package net.trivo.trivocustommod;
 
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.trivo.trivocustommod.block.ModBlocks;
+import net.trivo.trivocustommod.block.entity.ModBlockEntities;
 import net.trivo.trivocustommod.item.ModCreativeModeTabs;
 import net.trivo.trivocustommod.item.ModItems;
+import net.trivo.trivocustommod.screen.InfuseStationMenu;
+import net.trivo.trivocustommod.screen.InfuseStationScreen;
+import net.trivo.trivocustommod.screen.ItemCapabilityMenuHelper;
+import net.trivo.trivocustommod.screen.ModMenuTypes;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -59,8 +66,12 @@ public class TrivoCustomMod  {
 
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
         ModCreativeModeTabs.register(modEventBus);
+
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -88,9 +99,9 @@ public class TrivoCustomMod  {
     public static class ClientModEvents
     {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
+        public static void onClientSetup(RegisterMenuScreensEvent event)
         {
-
+            event.register(ModMenuTypes.INFUSE_STATION_MENU.get(), InfuseStationScreen::new);
         }
     }
 }
