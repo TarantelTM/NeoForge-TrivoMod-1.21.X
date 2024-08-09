@@ -1,10 +1,13 @@
 {
   "variants": {
-    "half=lower": {
-      "model": "trivoworks:block/infuse_station_lower"
-    },
-    "half=upper": {
-      "model": "trivoworks:block/infuse_station_upper"
-    }
+    "half=lower,facing=north": { "model": "trivoworks:block/infuse_station_lower" },
+    "half=lower,facing=east": { "model": "trivoworks:block/infuse_station_lower", "y": 90 },
+    "half=lower,facing=south": { "model": "trivoworks:block/infuse_station_lower", "y": 180 },
+    "half=lower,facing=west": { "model": "trivoworks:block/infuse_station_lower", "y": 270 },
+
+    "half=upper,facing=north": { "model": "trivoworks:block/infuse_station_upper" },
+    "half=upper,facing=east": { "model": "trivoworks:block/infuse_station_upper", "y": 90 },
+    "half=upper,facing=south": { "model": "trivoworks:block/infuse_station_upper", "y": 180 },
+    "half=upper,facing=west": { "model": "trivoworks:block/infuse_station_upper", "y": 270 }
   }
 }
